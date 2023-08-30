@@ -1,30 +1,29 @@
-const fs = require("fs");
 const http = require("http");
-const port = 3000;
+const fs = require("fs");
 
-const server = http.createServer(function (req, res) {
-  if (req.url == "/") {
-    res.write("This is Home Page");
-    res.end();
-  } else if (req.url == "/about") {
-    res.write("This is About Page");
-    res.end();
-  } else if (req.url == "/contact") {
-    res.write("This is Contact Page");
-    res.end();
-  } else if (req.url == "/file-write") {
+const server = http.createServer((req, res) => {
+  if (req.url === "/") {
+    res.writeHead(200, { "Content-Type": "text/html" });
+    res.end("This is Home Page");
+  } else if (req.url === "/about") {
+    res.writeHead(200, { "Content-Type": "text/html" });
+    res.end("This is About Page");
+  } else if (req.url === "/contact") {
+    res.writeHead(200, { "Content-Type": "text/html" });
+    res.end("This is Contact Page");
+  } else if (req.url === "/file-write") {
     fs.writeFile("demo.txt", "hello world", function (error) {
       if (error) {
-        res.write("file write Failed");
-        res.end();
+        res.writeHead(500, { "Content-Type": "text/html" });
+        res.end("file write Failed");
       } else {
-        res.write("File write Success");
-        res.end();
+        res.writeHead(200, { "Content-Type": "text/html" });
+        res.end("File write Success");
       }
     });
   }
 });
 
-server.listen(port, function () {
-  console.log("successfully run the server");
+server.listen(3000, () => {
+  console.log("Server run successfull");
 });
