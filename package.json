@@ -1,0 +1,12 @@
+{
+  "name": "mern",
+  "version": "1.0.0",
+  "description": "This is my first project",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "Rakib",
+  "license": "ISC"
+}
